@@ -9,9 +9,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 
-const categories = require('./routes/categories.route');
-const tags = require('./routes/tags.route');
-const comments = require('./routes/comments.route');
+const categories = require('./src/routes/categories.route');
+const tags = require('./src/routes/tags.route');
+const comments = require('./src/routes/comments.route');
 
 app.use('/categories', categories);
 app.use('/tags', tags);
