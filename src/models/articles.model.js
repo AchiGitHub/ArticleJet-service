@@ -11,7 +11,8 @@ let ArticleSchema = mongoose.Schema({
     author: String,
     datePublished: String,
     readDuration: Number,
-    tags: Array
+    tags: Array,
+    subHeader: String
 });
 
 // Export the model

@@ -13,7 +13,8 @@ exports.add_article = function (req, res) {
         author: req.body.author,
         datePublished: req.body.datePublished,
         readDuration: req.body.readDuration,
-        tags: req.body.tags
+        tags: req.body.tags,
+        subHeader: req.body.subHeader
     });
     article
         .save()
@@ -78,7 +79,8 @@ exports.edit_article = function (req, res, next) {
                 author: req.body.author,
                 datePublished: req.body.datePublished,
                 readDuration: req.body.readDuration,
-                tags: req.body.tags
+                tags: req.body.tags,
+                subHeader: req.body.subHeader
             }
         },
         {
