@@ -8,14 +8,18 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+//use morgan to log requests
+app.use(morgan('dev'))
 
 const categories = require('./src/routes/categories.route');
 const tags = require('./src/routes/tags.route');
 const comments = require('./src/routes/comments.route');
+const articles = require('./src/routes/articles.route');
 
 app.use('/categories', categories);
 app.use('/tags', tags);
 app.use('/comments', comments);
+app.use('/articles', articles);
 
 // Set up mongoose connection
 let dev_db_url = 'mongodb+srv://admin:admin@cluster0-myfal.mongodb.net/ArticleJet?retryWrites=true&w=majority';
@@ -23,13 +27,11 @@ let mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 mongoose.connect(mongoDB);
 
-
 mongoose.Promise = global.Promise;
 
 
 app.use(cors());
-//use morgan to log requests
-app.use(morgan('dev'))
+
 
 
 let db = mongoose.connection;
@@ -38,8 +40,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 //create server
-app.listen(3000, function () {
-    console.log('listening on 3000')
+app.listen(8359, function () {
+    console.log('listening on 8359')
 });
 
 
