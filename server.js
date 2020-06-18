@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
+const http = require('http');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -38,10 +39,12 @@ let db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+const port = process.env.PORT || 8359;
 
 //create server
-app.listen(8359, function () {
-    console.log('listening on 8359')
-});
+
+const server = http.createServer(app);
+
+server.listen(port);
 
 
