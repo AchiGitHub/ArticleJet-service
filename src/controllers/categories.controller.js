@@ -5,7 +5,8 @@ exports.categories_create = function (req, res) {
     console.log(req.body)
     const category = new Categories({
         _id: new mongoose.Types.ObjectId(),
-        name: req.body.name
+        name: req.body.name,
+        imageURL: req.body.imageURL
     });
 
     category
