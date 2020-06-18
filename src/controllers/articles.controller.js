@@ -116,6 +116,7 @@ exports.delete_article = function (req, res, next) {
 
 exports.get_articles_by_category = function (req, res, next) {
     const category = req.body.category;
+    console.log("exports.get_articles_by_category -> category", category)
     Articles.find({ category: category })
         .exec()
         .then(doc => {
@@ -227,4 +228,24 @@ exports.get_acticles_paginated_by_tags = async (req, res) => {
     } catch (err) {
       console.error(err.message);
     }
+};
+
+exports.get_articles_by_tags_and_category = function (req, res, next) {
+    const category = req.body.category;
+    const tags = req.body.tags;
+    Articles.find({ tags: { $in: tags } , 'category': category })
+        .exec()
+        .then(doc => {
+            if (doc) {
+                res.status(200).json(doc);
+            } else {
+                res
+                    .status(404)
+                    .json({ message: "No valid entry found for provided ID" });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ error: err });
+        });
 };
