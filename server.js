@@ -8,6 +8,7 @@ const http = require('http');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(express.bodyParser({limit: '50mb'}));
 
 //use morgan to log requests
 app.use(morgan('dev'))
