@@ -14,7 +14,8 @@ exports.add_article = function (req, res) {
         datePublished: req.body.datePublished,
         readDuration: req.body.readDuration,
         tags: req.body.tags,
-        subHeader: req.body.subHeader
+        subHeader: req.body.subHeader,
+        thumbnailImage: req.body.thumbnailImage
     });
     article
         .save()
@@ -80,7 +81,8 @@ exports.edit_article = function (req, res, next) {
                 datePublished: req.body.datePublished,
                 readDuration: req.body.readDuration,
                 tags: req.body.tags,
-                subHeader: req.body.subHeader
+                subHeader: req.body.subHeader,
+                thumbnailImage: req.body.thumbnailImage
             }
         },
         {

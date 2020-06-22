@@ -12,7 +12,8 @@ let ArticleSchema = mongoose.Schema({
     datePublished: String,
     readDuration: Number,
     tags: Array,
-    subHeader: String
+    subHeader: String,
+    thumbnailImage: String
 });
 
 // Export the model
