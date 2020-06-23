@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 let CommentsSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     articleId: String,
-    commentTime: Date,
-    commentor: String,
+    createTime: Date,
+    username: String,
     comment: String
 });
 

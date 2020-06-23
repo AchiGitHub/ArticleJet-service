@@ -5,8 +5,8 @@ exports.add_comment = function (req, res) {
     const comment = new Comments({
         _id: new mongoose.Types.ObjectId(),
         articleId: req.body.articleId,
-        commentTime: req.body.createTime,
-        commentor: req.body.username,
+        createTime: req.body.createTime,
+        username: req.body.username,
         comment: req.body.comment
     });
 
