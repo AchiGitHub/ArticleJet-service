@@ -21,4 +21,8 @@ router.get('/all/sort/by-tags', articles_controller.get_acticles_paginated_by_ta
 
 router.post('/all/by-tags-and-category', articles_controller.get_articles_by_tags_and_category);
 
+router.get('/all/info', articles_controller.get_acticles_info);
+
+router.get('/:id', articles_controller.get_acticle_by_id)
+
 module.exports = router;
