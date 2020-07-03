@@ -19,11 +19,13 @@ const categories = require('./src/routes/categories.route');
 const tags = require('./src/routes/tags.route');
 const comments = require('./src/routes/comments.route');
 const articles = require('./src/routes/articles.route');
+const users = require('./src/routes/users.route');
 
 app.use('/categories', categories);
 app.use('/tags', tags);
 app.use('/comments', comments);
 app.use('/articles', articles);
+app.use('/users', users);
 
 // Set up mongoose connection
 let dev_db_url = 'mongodb+srv://admin:admin@cluster0-myfal.mongodb.net/ArticleJet?retryWrites=true&w=majority';
