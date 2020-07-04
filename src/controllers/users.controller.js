@@ -9,7 +9,17 @@ exports.create_user = function (req, res) {
     });
 
     users
-        .save()
+        .updateOne(
+            { email: req.body.email },
+            {
+                $setOnInsert: {
+                    _id: new mongoose.Types.ObjectId(),
+                    name: req.body.name,
+                    email: req.body.email
+                }
+            },
+            { upsert: true }
+        )
         .then(result => {
             res.status(201).json({
                 message: "Handling POST requests to /users",
