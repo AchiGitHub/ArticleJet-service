@@ -162,7 +162,31 @@ exports.get_acticles_paginated = async (req, res) => {
         const articles = await Articles.find()
             .limit(limit * 1)
             .skip((page - 1) * limit)
-            .exec();
+            .exec()
+            .then(data => {
+
+                let articleInfo = [];
+                data.map((data, index) => {
+                    let singleArticle = {};
+                    singleArticle._id = data._id,
+                        singleArticle.isDraft = data.isDraft,
+                        singleArticle.isActive = data.isActive,
+                        singleArticle.userId = data.userId,
+                        singleArticle.title = data.title,
+                        singleArticle.category = data.category,
+                        singleArticle.author = data.author,
+                        singleArticle.datePublished = data.datePublished,
+                        singleArticle.readDuration = data.readDuration,
+                        singleArticle.tags = data.tags,
+                        singleArticle.subHeader = data.subHeader,
+                        singleArticle.thumbnailImage = data.thumbnailImage
+
+                    articleInfo.push(singleArticle)
+                })
+
+                return articleInfo;
+            }
+            )
 
         // get total documents in the Posts collection 
         const count = await Articles.countDocuments();
@@ -188,7 +212,31 @@ exports.get_acticles_paginated_by_category = async (req, res) => {
         const articles = await Articles.find({ category: category })
             .limit(limit * 1)
             .skip((page - 1) * limit)
-            .exec();
+            .exec()
+            .then(data => {
+
+                let articleInfo = [];
+                data.map((data, index) => {
+                    let singleArticle = {};
+                    singleArticle._id = data._id,
+                        singleArticle.isDraft = data.isDraft,
+                        singleArticle.isActive = data.isActive,
+                        singleArticle.userId = data.userId,
+                        singleArticle.title = data.title,
+                        singleArticle.category = data.category,
+                        singleArticle.author = data.author,
+                        singleArticle.datePublished = data.datePublished,
+                        singleArticle.readDuration = data.readDuration,
+                        singleArticle.tags = data.tags,
+                        singleArticle.subHeader = data.subHeader,
+                        singleArticle.thumbnailImage = data.thumbnailImage
+
+                    articleInfo.push(singleArticle)
+                })
+
+                return articleInfo;
+            }
+            )
 
         // get total documents in the Posts collection 
         const count = await Articles.countDocuments();
@@ -214,7 +262,31 @@ exports.get_acticles_paginated_by_tags = async (req, res) => {
         const articles = await Articles.find({ tags: { $all: tags } })
             .limit(limit * 1)
             .skip((page - 1) * limit)
-            .exec();
+            .exec()
+            .then(data => {
+
+                let articleInfo = [];
+                data.map((data, index) => {
+                    let singleArticle = {};
+                    singleArticle._id = data._id,
+                        singleArticle.isDraft = data.isDraft,
+                        singleArticle.isActive = data.isActive,
+                        singleArticle.userId = data.userId,
+                        singleArticle.title = data.title,
+                        singleArticle.category = data.category,
+                        singleArticle.author = data.author,
+                        singleArticle.datePublished = data.datePublished,
+                        singleArticle.readDuration = data.readDuration,
+                        singleArticle.tags = data.tags,
+                        singleArticle.subHeader = data.subHeader,
+                        singleArticle.thumbnailImage = data.thumbnailImage
+
+                    articleInfo.push(singleArticle)
+                })
+
+                return articleInfo;
+            }
+            )
 
         // get total documents in the Posts collection 
         const count = await Articles.countDocuments();
@@ -260,17 +332,17 @@ exports.get_acticles_info = async (req, res) => {
             data.map((data, index) => {
                 let singleArticle = {};
                 singleArticle._id = data._id,
-                singleArticle.isDraft = data.isDraft,
-                singleArticle.isActive =  data.isActive,
-                singleArticle.userId =  data.userId,
-                singleArticle.title =  data.title,
-                singleArticle.category = data.category,
-                singleArticle.author = data.author,
-                singleArticle.datePublished = data.datePublished,
-                singleArticle.readDuration = data.readDuration,
-                singleArticle.tags = data.tags,
-                singleArticle.subHeader = data.subHeader,
-                singleArticle.thumbnailImage = data.thumbnailImage
+                    singleArticle.isDraft = data.isDraft,
+                    singleArticle.isActive = data.isActive,
+                    singleArticle.userId = data.userId,
+                    singleArticle.title = data.title,
+                    singleArticle.category = data.category,
+                    singleArticle.author = data.author,
+                    singleArticle.datePublished = data.datePublished,
+                    singleArticle.readDuration = data.readDuration,
+                    singleArticle.tags = data.tags,
+                    singleArticle.subHeader = data.subHeader,
+                    singleArticle.thumbnailImage = data.thumbnailImage
 
                 articleInfo.push(singleArticle)
             })
