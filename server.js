@@ -20,12 +20,15 @@ const tags = require('./src/routes/tags.route');
 const comments = require('./src/routes/comments.route');
 const articles = require('./src/routes/articles.route');
 const users = require('./src/routes/users.route');
+const likes = require('./src/routes/likes.route')
 
 app.use('/categories', categories);
 app.use('/tags', tags);
 app.use('/comments', comments);
 app.use('/articles', articles);
 app.use('/users', users);
+app.use('/likes', likes);
+
 
 // Set up mongoose connection
 let dev_db_url = 'mongodb+srv://admin:admin@cluster0-myfal.mongodb.net/ArticleJet?retryWrites=true&w=majority';
