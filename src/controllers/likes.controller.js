@@ -46,12 +46,12 @@ exports.get_user_like_for_article = function (req, res, next) {
     Likes.find({ articleId: articleId, userId: userId })
         .exec()
         .then(doc => {
-            if (doc) {
-                res.status(200).json({likes: doc.length});
+            if (doc.length !== 0) {
+                res.status(200).json({liked: true});
             } else {
                 res
                     .status(404)
-                    .json({likes: 0});
+                    .json({liked: false});
             }
         })
         .catch(err => {
