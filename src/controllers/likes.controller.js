@@ -59,3 +59,19 @@ exports.get_user_like_for_article = function (req, res, next) {
             res.status(500).json({ error: err });
         });
 };
+
+exports.remove_like = function (req, res, next) {
+    const articleId = req.params.articleId;
+    const userId = req.params.userId;
+    Likes.remove({ articleId: articleId, userId: userId })
+        .exec()
+        .then(result => {
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+};
