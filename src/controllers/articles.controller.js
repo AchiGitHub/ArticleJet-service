@@ -49,7 +49,23 @@ exports.get_user_articles = function (req, res, next) {
         .exec()
         .then(doc => {
             if (doc) {
-                res.status(200).json(doc);
+                let articleInfo = [];
+                doc.map((data, index) => {
+                    let singleArticle = {};
+                        singleArticle._id = data._id,
+                        singleArticle.isDraft = data.isDraft,
+                        singleArticle.isActive = data.isActive,
+                        singleArticle.userId = data.userId,
+                        singleArticle.title = data.title,
+                        singleArticle.category = data.category,
+                        singleArticle.datePublished = data.datePublished,
+                        singleArticle.readDuration = data.readDuration,
+                        singleArticle.subHeader = data.subHeader
+
+                        articleInfo.push(singleArticle)
+                })
+
+                return res.status(200).json(articleInfo)
             } else {
                 res
                     .status(404)
